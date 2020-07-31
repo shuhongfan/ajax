@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        div:hover{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+<h2>异步对象</h2>
+<input type="button" value="ajax请求">
+<div></div>
+<script>
+    document.querySelector('input').onclick=function () {
+        var xhr=new XMLHttpRequest()
+        xhr.open('get','24.php')
+        // xhr.onload=function () {
+        //     console.log(xhr.responseText)
+        // }
+        xhr.onreadystatechange=function(){
+            console.log(xhr.status)
+            console.log(xhr.readyState)
+            if (xhr.readyState==4&&xhr.status==200){
+                console.log(xhr.readyState)
+                console.log(xhr.responseText)
+            }
+        }
+        xhr.send(null)
+    }
+</script>
+</body>
+</html>

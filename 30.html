@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="获取JSON格式数据">
+<script>
+    document.querySelector('input').onclick=function () {
+        var xhr=new XMLHttpRequest()
+        xhr.open('post','31.php')
+        xhr.onreadystatechange=function () {
+            if (xhr.status==200&&xhr.readyState==4){
+                console.log(xhr.responseText)
+                var res=JSON.parse(xhr.responseText)
+                console.log(res)
+
+                var ulDom=document.createElement('ul')
+
+                for (var i = 0; i <res.length; i++) {
+                    var current=res[i]
+                    console.log('姓名：'+current.name+'技能：'+current.skill)
+                    var liDom=document.createElement('li')
+                    liDom.innerHTML='姓名：'+current.name+'技能：'+current.skill
+                    ulDom.appendChild(liDom)
+                }
+
+                document.body.appendChild(ulDom)
+            }
+        }
+        xhr.send()
+    }
+</script>
+</body>
+</html>

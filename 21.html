@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background-color: seagreen;
+        }
+        ul{
+            width: 400px;
+            border: 1px solid #000000;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h2>聊天机器人</h2>
+    <input type="text">
+    <input type="button" value="发送">
+    <h3>聊天框</h3>
+    <ul></ul>
+</body>
+<script>
+    document.querySelector('input[type=button]').onclick=function () {
+        var myLi=document.createElement('li')
+        myLi.innerHTML=document.querySelector('input[type=text]').value
+        myLi.style.background='pink'
+        document.querySelector('ul').appendChild(myLi)
+
+        var xhr=new XMLHttpRequest()
+        xhr.open('get','22.php')
+        xhr.onload=function () {
+            console.log(xhr.responseText)
+            var herli=document.createElement('li')
+            herli.innerHTML=xhr.responseText
+            herli.style.background='skyblue'
+            document.querySelector('ul').append(herli)
+        }
+        xhr.send(null)
+    }
+</script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>天气预报</h2>
+<input type="text">
+<button>查询</button>
+<script>
+    document.querySelector('button').onclick=function () {
+        var xhr=new XMLHttpRequest()
+        xhr.open('get','http://wthrcdn.etouch.cn/WeatherApi?city='+document.querySelector('input').value)
+        xhr.onreadystatechange=function () {
+            if (xhr.readyState==4&&xhr.status==200){
+                console.log(xhr.responseXML)
+                var ulDom=document.createElement('ul')
+                ulDom.style.border='3px solid red'
+
+                var city=xhr.responseXML.querySelector('city').innerHTML
+                var updatetime=xhr.responseXML.querySelector('updatetime').innerHTML
+                var wendu=xhr.responseXML.querySelector('wendu').innerHTML
+                var fengli=xhr.responseXML.querySelector('fengli').innerHTML.split('[')[2].split(']')[0]
+                var shidu=xhr.responseXML.querySelector('shidu').innerHTML
+                var fengxiang=xhr.responseXML.querySelector('fengxiang').innerHTML
+                var sunrise_1=xhr.responseXML.querySelector('sunrise_1').innerHTML
+                var sunset_1=xhr.responseXML.querySelector('sunset_1').innerHTML
+                var zhishus=xhr.responseXML.querySelector('zhishus').querySelector('zhishu').querySelector('name').innerHTML
+                var value=xhr.responseXML.querySelector('zhishus').querySelector('zhishu').querySelector('value').innerHTML
+                var detail=xhr.responseXML.querySelector('zhishus').querySelector('zhishu').querySelector('detail').innerHTML
+
+                var lists=[city,updatetime,wendu,fengli,shidu,fengxiang,sunrise_1,sunset_1,zhishus,value,detail]
+                for (var i = 0; i <lists.length; i++) {
+                    var liDom=document.createElement('li')
+                    liDom.innerHTML=lists[i]
+                    ulDom.appendChild(liDom)
+                }
+                document.body.appendChild(ulDom)
+            }
+        }
+        xhr.send()
+    }
+</script>
+</body>
+</html>

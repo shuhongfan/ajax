@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="post请求">
+<script>
+    document.querySelector('input').onclick=function () {
+        var xhr=new XMLHttpRequest()
+        xhr.open('post','20.php')
+        xhr.onload=function(){
+            console.log(xhr.responseText)
+        }
+        xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
+        xhr.send('name=jack&food=fsds');
+    }
+</script>
+</body>
+</html>

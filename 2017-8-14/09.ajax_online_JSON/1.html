@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: #C91623;
+        }
+        .show-box{
+            width: 666px;
+            margin: 20px auto;
+            /* height: 666px; */
+            min-height: 66px;
+            border-radius: 20px;
+            border: 1px solid #000;
+            box-shadow: 0 0 30px skyblue;
+        }
+        td{
+            border: 1px solid #000;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+<h2>lol数据解析</h2>
+<input type="button" value='获取LOL JSON数据'>
+
+<!--  展示数据的容器  -->
+<div class="show-box"></div>
+<script>
+    document.querySelector('input').onclick=function () {
+        var xhr=new XMLHttpRequest()
+        xhr.open('get','backHero.php')
+        xhr.onreadystatechange=function () {
+            if (xhr.readyState==4&&xhr.status==200){
+                console.log(xhr.responseText)
+                var result=JSON.parse(xhr.responseText)
+                console.log(result)
+
+                var html='<table>'
+                for (var i = 0; i <result.length; i++) {
+                    var currentObj=result[i]
+                    html+='<tr>'
+                    html+='<td>'+currentObj.shop_name+'</td>>'
+                    html+='<td><img src="'+currentObj.shop_logo+'"></td>>'
+                    html+='<td><img src="'+currentObj.pic_url+'"></td>>'
+                    html+='</tr>'
+                }
+                html+='</table>'
+                document.querySelector('.show-box').innerHTML=html
+            }
+        }
+        xhr.send(null)
+    }
+</script>
+</body>
+</html>

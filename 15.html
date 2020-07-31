@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>get请求</button>
+<h3></h3>
+</body>
+<script>
+    document.querySelector('button').onclick=function () {
+        // 创建xhr对象
+        var xhr=new XMLHttpRequest()
+        // 设置请求行
+        xhr.open('get','16.php?name=rose&skill=swim')
+        // 注册回调函数
+        xhr.onload=function () {
+            console.log(xhr.responseText)
+            document.querySelector('h3').innerHTML=xhr.responseText
+        }
+        // 设置请求头
+        xhr.setRequestHeader()
+        // 请求主体发送
+        xhr.send('ok')
+    }
+</script>
+</html>

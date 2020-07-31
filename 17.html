@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>用户注册</h2>
+<input type="text">
+<h3></h3>
+<h4></h4>
+<script>
+    document.querySelector('input').onblur=function () {
+        document.querySelector('h4').innerHTML='验证中'
+        // 异步对象
+        var xhr=new XMLHttpRequest()
+        // 请求行
+        xhr.open('get','18.php?name='+this.value)
+        // 请求头
+        // xhr.setRequestHeader()
+        // 注册回调函数
+        xhr.onload=function () {
+            console.log(xhr.responseText)
+            document.querySelector('h3').innerHTML=xhr.responseText;
+            document.querySelector('h4').innerHTML='验证完成'
+        }
+        // 请求主体发送
+        xhr.send(null)
+    }
+</script>
+</body>
+</html>

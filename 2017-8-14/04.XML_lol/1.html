@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>获取xml英雄数据 并解析</h2>
+<input type="button" value="获取xml英雄数据">
+<script>
+    document.querySelector('input').onclick=function () {
+        var xhr=new XMLHttpRequest()
+        xhr.open('get','1.php')
+        xhr.onreadystatechange=function () {
+            // console.log(xhr.responseText)
+            if (xhr.status===200&&xhr.readyState===4){
+                console.log(xhr.responseXML)
+                var allHero=xhr.responseXML.querySelectorAll('hero')
+                console.log(allHero)
+
+                var ulDom=document.createElement('ul')
+                for (var i = 0; i < allHero.length; i++) {
+                    var currentHero=allHero[i]
+                    // console.log(currentHero)
+                    var icon=currentHero.querySelector('icon').innerHTML
+                    var name=currentHero.querySelector('name').innerHTML
+                    console.log(icon+'|||'+name)
+
+                    var liDom=document.createElement('li')
+                    liDom.innerHTML='<img src="'+icon+'">--<span>'+name+'</span>'
+                    ulDom.appendChild(liDom)
+                }
+                document.body.appendChild(ulDom)
+            }
+        }
+        xhr.send()
+    }
+</script>
+</body>
+</html>

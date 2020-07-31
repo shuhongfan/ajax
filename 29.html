@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var JSONobject='{"name":"shu","skill":"swimming"}'
+    var obj=JSON.parse(JSONobject)
+    console.log(obj)
+    console.log(obj.name)
+    console.log(obj.skill)
+
+    var JSONArr='["绿色的花菜","大葱","番茄","圣女果"]'
+    var arr=JSON.parse(JSONArr)
+    console.log(arr)
+    console.log(arr[2])
+
+    var JSONobjArr='{"name":"艳阳","skill":"把妹","friends":["周琳琳","多少岁"]}'
+    var objarr=JSON.parse(JSONobjArr)
+    console.log(objarr)
+    console.log(objarr.friends[0])
+
+    var JSONString2="{\"name\":\"jack\"}"
+
+</script>
+</body>
+</html>

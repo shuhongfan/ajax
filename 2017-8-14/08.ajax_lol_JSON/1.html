@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background-color: yellowgreen;
+        }
+        .show-box{
+            width: 666px;
+            min-height: 66px;
+            border-radius: 20px;
+            box-shadow: 0 0 40px skyblue;
+            margin: 20px auto;
+        }
+        .show-box td{
+            border: 1px solid #000;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+<h2>lol数据解析</h2>
+<input type="button" value="获取lol json数据">
+<div class="show-box"></div>
+<script>
+    document.querySelector('input').onclick=function () {
+        var xhr=new XMLHttpRequest()
+        xhr.open('get','backHero.php')
+        xhr.onreadystatechange=function () {
+            if (xhr.status===200&&xhr.readyState===4){
+                console.log(xhr.responseText)
+                var heroArr=JSON.parse(xhr.responseText)
+                console.log(heroArr)
+
+                var html=''
+                html+='<table>'
+                for (var i = 0; i<heroArr.length; i++) {
+                    var currentHero=heroArr[i]
+                    html+='<tr>'
+
+                    html+='<td>'+currentHero.champion_name+'</td>'
+                    html+='<td>'+currentHero.champion_title+'</td>'
+                    html+='<td><img src="'+currentHero.champion_icon+'"></td>'
+                    html+='<td>'+currentHero.champion_info+'</td>'
+                    html+='<td>'+currentHero.champion_tags+'</td>'
+
+                    html+='</tr>'
+                }
+                html+='</table>'
+                console.log(html)
+                document.querySelector('.show-box').innerHTML=html
+            }
+        }
+        xhr.send(null)
+    }
+</script>
+</body>
+</html>
