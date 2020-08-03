@@ -3,21 +3,21 @@
 
     header('Content-Type:text/html;charset=utf-8');
 
-   $con = mysql_connect("localhost","root","root");
+   $con = mysqli_connect("localhost","root","root");
 
     if (!$con){
-        die('Could not connect: ' . mysql_error());
+        die('Could not connect: ' . mysqli_error());
     }
 
-    mysql_select_db("test", $con);
+    mysqli_select_db($con,"test" );
 
     $sql = "DELETE FROM student WHERE id = $_GET[id]";
 
-    mysql_query($sql,$con);
+    mysqli_query($con,$sql);
 
   echo $_GET['callback'].'({"status":"ok"})';
 
 
-    mysql_close($con);
+    mysqli_close($con);
 
 ?>

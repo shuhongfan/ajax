@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" class="get" value="测试get">
+<input type="button" class="post" value="测试post">
+<input type="button" class="ajax" value="测试ajax">
+<input type="button" class="ajax1" value="测试ajax1">
+<input type="button" class="json" value="测试json">
+<input type="button" class="xml" value="测试xml">
+<script src="35.js"></script>
+<script>
+    document.querySelector('.get').onclick=function () {
+        get('./2017-8-15/00.backData/01.backSendData.php','name=jack&friend=rose',function (data) {
+            console.log(data)
+        })
+    }
+    document.querySelector('.post').onclick=function () {
+        post('./2017-8-15/00.backData/01.backSendData.php','name=rose&friend=青椒',function (data) {
+            console.log(data)
+        })
+    }
+    document.querySelector('.ajax').onclick=function () {
+        ajax('./2017-8-15/00.backData/01.backSendData.php','get','name=葫芦娃&food=胡萝卜',function (data) {
+            console.log(data)
+        })
+        ajax('./2017-8-15/00.backData/01.backSendData.php','post','name=蛇精&food=葫芦娃爷爷',function (data) {
+            console.log(data)
+        })
+    }
+    document.querySelector('.ajax1').onclick=function () {
+        ajax1({
+            url:'./2017-8-15/00.backData/01.backSendData.php',
+            type:'get',
+            data:'name=葫芦娃&food=胡萝卜',
+            success(data){
+                console.log(data)
+            }
+        })
+        ajax1({
+            url:'./2017-8-15/00.backData/01.backSendData.php',
+            type:'post',
+            data:'name=蛇精&food=葫芦娃爷爷',
+            success(data){
+                console.log(data)
+            }
+        })
+    }
+    document.querySelector('.json').onclick=function () {
+        ajax1({
+            type:'get',
+            url:'40.php',
+            success(data){
+                console.log(data)
+            }
+        })
+    }
+    document.querySelector('.xml').onclick=function () {
+        ajax1({
+            type:'get',
+            url:'41.php',
+            success(data){
+                console.log(data)
+            }
+        })
+    }
+</script>
+</body>
+</html>

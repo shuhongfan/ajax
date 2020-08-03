@@ -3,7 +3,7 @@
 	$mobile = $_POST['mobile'];
 
 	// 数组
-	$mobileArr  = json_decode(file_get_contents('./data/mobile.json'));
+	$mobileArr  = json_decode(file_get_contents('data/mobile.json',FILE_USE_INCLUDE_PATH));
 	
 	
 	// 判断并返回结果

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/template-web.js"></script>
+</head>
+<body>
+<script type="text/html" id="template">
+    {{if male=='女'}}
+    <ul>
+        <li>欢迎您 {{name}} 女士</li>
+        <ol>
+            <li>这是最新款的包包</li>
+            <li>这是最新款的口红</li>
+            <li>没想到，你竟然是 {{skill}}</li>
+        </ol>
+    </ul>
+    {{else if male=='男'}}
+    <ul>
+        <li>欢迎您 {{name}} 先生</li>
+        <ol>
+            <li>这是最新款的拖拉机</li>
+            <li>讨厌，才来找人家</li>
+            <li>没想到，你竟然稍长 {{skill}}</li>
+        </ol>
+    </ul>
+    {{/if}}
+</script>
+<script>
+    var person={
+        male:'女',
+        name:'郑爽',
+        skill:'身材好'
+    }
+    var person2={
+        male:'男',
+        name:'张翰',
+        skill:'这片鱼塘我承包了'
+    }
+    console.log(template('template',person))
+    console.log(template('template',person2))
+</script>
+</body>
+</html>

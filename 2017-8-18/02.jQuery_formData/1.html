@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.js"></script>
+</head>
+<body>
+<h2>jq格式化表单</h2>
+<form action="">
+    <input type="text" name="name">
+    <input type="text" name="tel">
+    <input type="text" name="email">
+    <input type="text" name="address">
+</form>
+</body>
+<script>
+    $(function () {
+        $('h2').click(function () {
+            var data=$('form').serialize()
+            console.log(data)
+        })
+    })
+</script>
+</html>

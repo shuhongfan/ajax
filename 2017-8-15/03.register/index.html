@@ -121,45 +121,84 @@
  -->
 <script>
     $(function () {
-        // 需求1
         $('.inputName').blur(function () {
-            $('.cover').show();
-            // 发送请求
+            $('.cover').show()
             ajax({
-                type: 'get',
-                url: '_api/01.check.php',
-                data: 'name=' + $('.inputName').val(),
-                success: function (data) {
-                    console.log(data);
-                    $('.cover').hide();
-                    // delay 让后面的动画 延迟一会调用
-                    $('.tips').html(data.message).fadeIn(1000).delay(2000).fadeOut();
-                    // 如果可以注册 删除类名即可
-                    if (data.status == 'can') {
-                        $('.sub').removeClass('disabled');
+                type:'get',
+                url:'_api/01.check.php',
+                data:'name='+$('.inputName').val(),
+                success(data){
+                    console.log(data)
+                    $('.cover').hide()
+                    $('.tips').html(data.message).fadeIn().delay(2000).fadeOut()
+                    if (data.status=='can'){
+                        $('.sub').removeClass('disabled')
+                    } else {
+                        $('.sub').addClass('disabled')
                     }
                 }
             })
         })
-
-        // 需求3
-        $('.sub').click(function(){
-            if($(this).hasClass('disabled')==true){
-                alert('哥们,别点了');
-                return;
+        $('.sub').click(function () {
+            if ($(this).hasClass('disabled')===true){
+                alert('请输入内容')
+                return false
             }
-            $('.cover').show();
+            $('.cover').show()
             ajax({
                 url:'_api/register.php',
                 type:'post',
                 data:'name='+$('.inputName').val(),
-                success:function(data){
-                    $('.cover').hide();
-                    $('.tips').html(data).fadeIn(1000).delay(1000).fadeOut(1000);
-                    // 添加禁用的类名即可
-                    $('.sub').addClass('disabled');
+                success(data){
+                    console.log(data)
+                    $('.cover').hide()
+                    $('.tips').html(data).fadeIn(1000).delay(1000).fadeOut(1000)
+                    $('.sub').addClass('disabled')
                 }
             })
         })
     })
+
+    // $(function () {
+    //     // 需求1
+    //     $('.inputName').blur(function () {
+    //         $('.cover').show();
+    //         // 发送请求
+    //         ajax({
+    //             type: 'get',
+    //             url: '_api/01.check.php',
+    //             data: 'name=' + $('.inputName').val(),
+    //             success: function (data) {
+    //                 console.log(data);
+    //                 $('.cover').hide();
+    //                 // delay 让后面的动画 延迟一会调用
+    //                 $('.tips').html(data.message).fadeIn(1000).delay(2000).fadeOut();
+    //                 // 如果可以注册 删除类名即可
+    //                 if (data.status == 'can') {
+    //                     $('.sub').removeClass('disabled');
+    //                 }
+    //             }
+    //         })
+    //     })
+    //
+    //     // 需求3
+    //     $('.sub').click(function(){
+    //         if($(this).hasClass('disabled')==true){
+    //             alert('哥们,别点了');
+    //             return;
+    //         }
+    //         $('.cover').show();
+    //         ajax({
+    //             url:'_api/register.php',
+    //             type:'post',
+    //             data:'name='+$('.inputName').val(),
+    //             success:function(data){
+    //                 $('.cover').hide();
+    //                 $('.tips').html(data).fadeIn(1000).delay(1000).fadeOut(1000);
+    //                 // 添加禁用的类名即可
+    //                 $('.sub').addClass('disabled');
+    //             }
+    //         })
+    //     })
+    // })
 </script>

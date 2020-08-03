@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>模板引擎</h2>
+<script type="text/html" id="template">
+    <ul>
+        <li>{{name}}</li>
+        <li>{{skill}}</li>
+    </ul>
+</script>
+<script>
+    // 获取字符串
+    var str=document.querySelector('#template').innerHTML
+    // 替换数据
+    var data={
+        name:'谢霆锋',
+        skill:'帅气'
+    }
+    // 定义正则
+    var reg=/{{(\w+)}}/
+    // 检索
+    var result=reg.exec(str)
+    while (result){
+        // 循环替换 直到为null
+        str=str.replace(result[0],data[result[1]])
+        // 再次检索
+        result=reg.exec(str)
+        console.log(str)
+    }
+</script>
+</body>
+</html>

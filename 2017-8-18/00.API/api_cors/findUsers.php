@@ -6,7 +6,8 @@ header('Content-Type:application/json;charset=utf-8');
 // 默认值
 // 默认 的用户 名root 密码 也是 root
 // 默认的用户名还有密码时 root root
-$con = mysql_connect("localhost","root","root");
+//$con = mysql_connect("localhost","root","root");
+$con = mysqli_connect("localhost","root","root");
 
 // 判断是否连接成功
 if (!$con){
@@ -14,7 +15,8 @@ if (!$con){
 }
 
 // 选择数据库
-mysql_select_db("test", $con);
+//mysql_select_db("test", $con);
+mysqli_select_db($con,"test");
 
 $pageNum = $_GET['pageNum'];
 $pageSize = $_GET['pageSize'];
@@ -24,13 +26,13 @@ $start=($pageNum-1)*$pageSize;
 // 数据库查询语句
 $sql="select *,(select count(*) from student) as total from student order by id desc limit $start , $pageSize ";
 
-$result = mysql_query($sql);
+$result = mysqli_query($con,$sql);
 
 $list = array();
 $total = 0;
 
 // 获取数据
-while($row = mysql_fetch_array($result)){
+while($row = mysqli_fetch_array($result)){
     $item = array(
     'id' => $row['id'],
     'password' => $row['password'],
@@ -51,7 +53,7 @@ array(
 )
 );
 
-mysql_close($con);
+mysqli_close($con);
 
 // sleep(1);
 ?>

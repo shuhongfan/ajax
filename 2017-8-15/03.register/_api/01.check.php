@@ -6,7 +6,7 @@ header('content-type:application/json;charset=utf-8');
 // 接受发送的数据 $_GET
 $name = $_GET['name'];
 // 读取json格式字符串 string
-$jsonString = file_get_contents('./data/arr.json');
+$jsonString = file_get_contents('data/arr.json',FILE_USE_INCLUDE_PATH);
 // php中 也有 转化JSON格式字符串的代码
 // string->arr(obj)
 // print_r(json_decode($jsonString));

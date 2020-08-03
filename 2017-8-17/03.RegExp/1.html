@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str='我是一匹来自{{place}}的西蓝花，我生长在无垠的{{home}}中'
+    var reg=/{{(\w+)}}/
+    console.log(reg.test(str))
+    console.log(reg.exec(str))
+
+    var placeall=reg.exec(str)[0]
+    var place=reg.exec(str)[1]
+    var data={
+        place:'南方',
+        home:'武汉'
+    }
+
+    str=str.replace(placeall,data.place)
+
+    console.log(str)
+    console.log(reg.exec(str))
+</script>
+</body>
+</html>

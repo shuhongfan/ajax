@@ -331,7 +331,7 @@
     $('#coverModal').modal('show');
     // 无刷新获取数据
     $.ajax({
-      url: 'http://127.0.0.1/2017-8-18/00.API/api_JSONP/findUsers.php',
+      url: 'http://localhost:63342/ajax/2017-8-18/00.API/api_JSONP/findUsers.php',
       data: {
         pageNum: my_pageNum,
         pageSize: 5
@@ -414,7 +414,7 @@
       $('#coverModal').modal('show');
       // 无刷新删除数据
       $.ajax({
-        url: "http://127.0.0.1/2017-8-18/00.API/api_JSONP/removeUser.php",
+        url: "http://localhost:63342/ajax/2017-8-18/00.API/api_JSONP/removeUser.php",
         dataType: 'jsonp',
         data: {
           id: removeId
@@ -432,7 +432,7 @@
       $('#coverModal').modal('show');
       console.log($("#addModal form").serialize());
       $.ajax({
-        url: 'http://127.0.0.1/2017-8-18/00.API/api_JSONP/saveUser.php',
+        url: 'http://localhost:63342/ajax/2017-8-18/00.API/api_JSONP/saveUser.php',
         dataType: "jsonp",
         //   $("#addModal form").serialize() 格式化之后的结果是
         // key=value&key2=value2
@@ -456,7 +456,7 @@
       console.log(editId);
       // 获取对应的数据
       $.ajax({
-        url: 'http://127.0.0.1/2017-8-18/00.API/api_JSONP/getOneUser.php',
+        url: 'http://localhost:63342/ajax/2017-8-18/00.API/api_JSONP/getOneUser.php',
         dataType:'jsonp',
         data: {
           id: editId
@@ -487,7 +487,7 @@
       sendData += editId;
       // console.log(sendData);
       $.ajax({
-        url: 'http://127.0.0.1/2017-8-18/00.API/api_JSONP/modifyUser.php',
+        url: 'http://localhost:63342/ajax/2017-8-18/00.API/api_JSONP/modifyUser.php',
         data: sendData,
         dataType: 'jsonp',
         success: function (data) {

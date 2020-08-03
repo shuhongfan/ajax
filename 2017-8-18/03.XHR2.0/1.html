@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .progress{
+            width:500px;
+            height: 30px;
+            border: 1px solid gray;
+        }
+        .step{
+            height: 100%;
+            width: 0;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+<h2>XHR2.0</h2>
+<form action="">
+    <input type="text" name="name">
+    <input type="text" name="email">
+    <input type="text" name="address">
+    <input type="file" name="icon">
+</form>
+<input type="button" value="ajax发送数据">
+<div class="progress">
+    <div class="step"></div>
+</div>
+<script>
+    document.querySelector('input[type=button]').onclick=function () {
+        var xhr=new XMLHttpRequest()
+        xhr.open('post','2.php')
+        xhr.onreadystatechange=function () {
+            if (xhr.readyState==4&&xhr.status==200){
+                console.log(xhr.responseText)
+            }
+        }
+        // 格式化表单
+        var sendData=new FormData(document.querySelector('form'))
+        // 上传回调函数
+        xhr.upload.onprogress=function(event){
+            console.log(event)
+            var percent=event.loaded/event.total
+            console.log(percent)
+            document.querySelector('.step').style.width=percent+'px'
+        }
+        xhr.send(sendData)
+    }
+</script>
+</body>
+</html>

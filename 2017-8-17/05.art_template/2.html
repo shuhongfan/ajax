@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/template-web.js"></script>
+    <style>
+        a{
+            display: block;
+            width: 30px;
+        }
+    </style>
+</head>
+<body>
+<script type="text/html" id="template">
+    <ul>
+        <li>{{name}}</li>
+        <li>{{skill}}</li>
+        <li><a href="{{infourl}}"></a></li>
+        <li>{{@info}}</li>
+
+    </ul>
+    <p>{{@info}}</p>
+</script>
+<script>
+    var person3={
+        name:'犬夜叉',
+        skill:'变犬',
+        info:'<a href="https://baike.baidu.com/item/%E7%8A%AC%E5%A4%9C%E5%8F%89/4628544?fr=aladdin"></a>',
+        infourl:'https://baike.baidu.com/item/%E7%8A%AC%E5%A4%9C%E5%8F%89/4628544?fr=aladdin'
+    }
+    console.log(template('template',person3))
+    document.body.innerHTML=template('template',person3)
+</script>
+</body>
+</html>

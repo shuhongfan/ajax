@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="shf-template.js"></script>
+</head>
+<body>
+<script type="text/html" id="template">
+    <h3>{{name}}</h3>
+    <h3>{{skill}}</h3>
+</script>
+<script>
+var data={
+    name:'王宝强',
+    skill:'找了个好经纪人'
+}
+var resultString=shf_template('template',data)
+console.log(resultString)
+</script>
+</body>
+</html>

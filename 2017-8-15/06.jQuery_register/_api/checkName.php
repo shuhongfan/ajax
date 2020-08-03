@@ -3,7 +3,7 @@
 	$userName = $_GET['name'];
 
 	// 数组
-	$nameArr  = json_decode(file_get_contents('./data/user.json'));
+	$nameArr  = json_decode(file_get_contents('data/user.json',FILE_USE_INCLUDE_PATH));
 	
 	
 	// 判断并返回结果

@@ -331,7 +331,7 @@
     $('#coverModal').modal('show');
     // 无刷新获取数据
     $.ajax({
-      url: 'http://127.0.0.1/2017-8-18/00.API/api_cors/findUsers.php',
+      url: 'http://localhost:63342/ajax/2017-8-18/00.API/api_cors/findUsers.php',
       data: {
         pageNum: my_pageNum,
         pageSize: 5
@@ -413,7 +413,7 @@
       $('#coverModal').modal('show');
       // 无刷新删除数据
       $.ajax({
-        url: "http://127.0.0.1/2017-8-18/00.API/api_cors/removeUser.php",
+        url: "http://localhost:63342/ajax/2017-8-18/00.API/api_cors/removeUser.php",
         type: 'post',
         data: {
           id: removeId
@@ -431,7 +431,7 @@
       $('#coverModal').modal('show');
       console.log($("#addModal form").serialize());
       $.ajax({
-        url: 'http://127.0.0.1/2017-8-18/00.API/api_cors/saveUser.php',
+        url: 'http://localhost:63342/ajax/2017-8-18/00.API/api_cors/saveUser.php',
         type: "post",
         //   $("#addModal form").serialize() 格式化之后的结果是
         // key=value&key2=value2
@@ -455,7 +455,7 @@
       console.log(editId);
       // 获取对应的数据
       $.ajax({
-        url: 'http://127.0.0.1/2017-8-18/00.API/api_cors/getOneUser.php',
+        url: 'http://localhost:63342/ajax/2017-8-18/00.API/api_cors/getOneUser.php',
         data: {
           id: editId
         },
@@ -485,7 +485,7 @@
       sendData += editId;
       // console.log(sendData);
       $.ajax({
-        url: 'http://127.0.0.1/2017-8-18/00.API/api_cors/modifyUser.php',
+        url: 'http://localhost:63342/ajax/2017-8-18/00.API/api_cors/modifyUser.php',
         data: sendData,
         type: 'post',
         success: function (data) {

@@ -10,7 +10,7 @@
 
    <!--  还有 那些元素 有src属性 -->
    <!-- JSONP 就是利用了 src属性 支持跨域获取资源 -->
-   <!-- <script src='http://192.168.70.78/2017-8-17/12.JSONP/backData.js'></script> -->
+<!--    <script src='http://192.168.70.78/2017-8-17/12.JSONP/backData.js'></script>-->
 
    <!-- JSONP的真实用法 -->
    <script>
@@ -18,9 +18,11 @@
          console.log(data);
        }
    </script>
-   <script  src="http://192.168.70.78/2017-8-17/12.JSONP/backData.php?callback=doSomething">
+<!--   <script  src="http://192.168.70.78/2017-8-17/12.JSONP/backData.php?callback=doSomething">-->
 
-      doSomething({"name":"jack","food":"西兰花"})
-   </script>
+<!--      doSomething({"name":"jack","food":"西兰花"})-->
+<!--   </script>-->
+<!--   <script src="http://localhost:63342/ajax/2017-8-17/12.JSONP/backData.js"></script>-->
+   <script src="http://localhost:63342/ajax/2017-8-17/12.JSONP/backData.php?callback=doSomething"></script>
 </body>
 </html>

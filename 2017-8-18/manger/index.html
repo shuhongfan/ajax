@@ -297,7 +297,8 @@
     // 需求1
     // $('#coverModal').modal('show');
     $.ajax({
-      url: 'http://127.0.0.1/2017-8-18/00.API/api_cors/findUsers.php',
+      // url: 'http://127.0.0.1/2017-8-18/00.API/api_cors/findUsers.php',
+      url: 'http://localhost:63342/ajax/2017-8-18/00.API/api_cors/findUsers.php',
       data: {
         pageNum: my_pageNum,
         pageSize: 6
@@ -366,7 +367,7 @@
       // 开启遮罩层
       $('#coverModal').modal('show');
       $.ajax({
-        url: 'http://127.0.0.1/2017-8-18/00.API/api_cors/saveUser.php',
+        url: 'http://localhost:63342/ajax/2017-8-18/00.API/api_cors/saveUser.php',
         type: 'post',
         data: $("#addModal form").serialize(),
         success: function (data) {
@@ -387,7 +388,7 @@
       // console.log(123);
       $('#coverModal').modal('show');
       $.ajax({
-        url: "http://127.0.0.1/2017-8-18/00.API/api_cors/removeUser.php",
+        url: "http://localhost:63342/ajax/2017-8-18/00.API/api_cors/removeUser.php",
         type: 'post',
         data: {
           id: removeId
@@ -405,7 +406,7 @@
       editId = $(this).parent().siblings().first().html();
       // 获取当前的数据
       $.ajax({
-        url: 'http://127.0.0.1/2017-8-18/00.API/api_cors/getOneUser.php',
+        url: 'http://localhost:63342/ajax/2017-8-18/00.API/api_cors/getOneUser.php',
         data: {
           id: editId
         },
@@ -422,7 +423,7 @@
     // 点击修改窗的确认按钮
     $('#editModal .btn-primary').click(function () {
       $.ajax({
-        url: "http://127.0.0.1/2017-8-18/00.API/api_cors/modifyUser.php",
+        url: "http://localhost:63342/ajax/2017-8-18/00.API/api_cors/modifyUser.php",
         type: 'post',
         data: ($('#editModal form').serialize()+'&id='+editId),
         success: function (data) {

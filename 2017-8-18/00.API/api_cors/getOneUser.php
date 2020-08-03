@@ -5,24 +5,24 @@ header('Content-Type:application/json;charset=utf-8');
 
 
 // 默认值
-$con = mysql_connect("localhost","root","root");
+$con = mysqli_connect("localhost","root","root");
 
 if (!$con){
     die('Could not connect: ' . mysql_error());
 }
 
-mysql_select_db("test", $con);
+mysqli_select_db($con,"test");
 
 $id = $_GET['id'];
 
 $sql="select * from student where id = $id";
 
-$result = mysql_query($sql);
+$result = mysqli_query($con,$sql);
 
 $list = array();
 $total = 0;
 
-while($row = mysql_fetch_array($result)){
+while($row = mysqli_fetch_array($result)){
     $item = array(
     'id' => $row['id'],
     'password' => $row['password'],
@@ -39,7 +39,7 @@ array(
     )
 );
 
-mysql_close($con);
+mysqli_close($con);
 
 // sleep(1);
 ?>

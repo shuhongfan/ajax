@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>模板引擎</h1>
+<script src="template-web.js"></script>
+<script type="text/html" id="tempalte">
+     <ul>
+         <li>名字{{name}}</li>
+         <li>技能{{skill}}</li>
+         <li>爱好{{hobbit}}</li>
+     </ul>
+</script>
+<script>
+    var data={
+        name:'周琳琳',
+        skill:'帅气',
+        habbit:'开车'
+    }
+    var result=template('tempalte',data)
+    console.log(result)
+    document.body.innerText=result
+</script>
+</body>
+</html>

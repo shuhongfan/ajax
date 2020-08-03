@@ -1,5 +1,6 @@
 接口说明：信息列表
     接口地址：http://127.0.0.1/2017-8-18/00.API/api_cors/findUsers.php
+    接口地址：http://localhost:63342/ajax/2017-8-18/00.API/api_cors/findUsers.php
 请求方式：get
 接口参数：pageNum 当前是第几页    pageSize 当前页需要显示多少条
 
@@ -15,7 +16,7 @@
                 age 年龄
 ================================================================================
 接口说明：添加信息
-接口地址：http://127.0.0.1/2017-8-18/00.API/api_cors/saveUser.php
+接口地址：http://localhost:63342/ajax/2017-8-18/00.API/api_cors/saveUser.php
 请求方式：post
 接口参数：
          password 密码
@@ -26,7 +27,7 @@
 返回数据：status (ok表示成功)
 =================================================================================
 接口说明：删除信息
-接口地址：http://127.0.0.1/2017-8-18/00.API/api_cors/removeUser.php
+接口地址：http://localhost:63342/ajax/2017-8-18/00.API/api_cors/removeUser.php
 请求方式：post
 接口参数：id 唯一标识
 
@@ -34,7 +35,7 @@
 
 =================================================================================
 接口说明：根据id获取一条
-接口地址：http://127.0.0.1/2017-8-18/00.API/api_cors/getOneUser.php
+接口地址：http://localhost:63342/ajax/2017-8-18/00.API/api_cors/getOneUser.php
 请求方式：get
 接口参数：id 唯一标识
 
@@ -46,7 +47,7 @@
                 age 年龄
 ================================================================================
 接口说明：根据id修改数据
-接口地址：http://127.0.0.1/2017-8-18/00.API/api_cors/modifyUser.php
+接口地址：http://localhost:63342/ajax/2017-8-18/00.API/api_cors/modifyUser.php
 请求方式：post
 接口参数：id 唯一标识
          password 密码

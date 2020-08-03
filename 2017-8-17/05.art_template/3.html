@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/template-web.js"></script>
+</head>
+<body>
+<script type="text/html" id="template">
+    <ul>
+        <li>
+            兄弟们
+            <ol>
+                {{each borther}}
+                    <li>{{$index}}*---*{{$value}}</li>
+                {{/each}}
+            </ol>
+        </li>
+        <li>
+            家人们
+            <ol>
+                {{each family}}
+                    <li>{{$index}}---{{$value.name}}---{{$value.skill}}</li>
+                {{/each}}
+            </ol>
+        </li>
+    </ul>
+</script>
+<script>
+    var person={
+        name:'大娃',
+        borther:[
+            '二娃',
+            '三娃',
+            '水娃'
+        ],
+        family:[
+            {name:'爷爷',skill:'被抓'},
+            {name:'穿山甲',skill:'到底说了什么'},
+            {name:'小蝴蝶',skill:'撩 葫芦娃'}
+        ]
+    }
+    console.log(template('template',person))
+    document.body.innerHTML=template('template',person)
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>模板引擎</h2>
+<script type="text/html" id="template">
+    <ul>
+        <li>{{name}}</li>
+        <li>{{skill}}</li>
+    </ul>
+</script>
+<script>
+    var str=document.querySelector('#template').innerHTML
+    var data={
+        name:'陈冠希',
+        skill:'不会自己修电脑'
+    }
+    var reg=/{{(\w+)}}/
+
+    // 检索满足条件的部分
+    var result=reg.exec(str)
+    console.log(result)
+    str=str.replace(result[0],data[result[1]])
+    console.log(str)
+
+    // 再次检索替换
+    var result=reg.exec(str)
+    str=str.replace(result[0],data[result[1]])
+    console.log(str)
+    console.log(reg.exec(str))
+
+</script>
+</body>
+</html>

@@ -11,30 +11,68 @@
 </body>
 </html>
 <script  src="./jquery-1.12.4.min.js"></script>
+<!--jquery的原理是 动态创建一个script标签 利用src发送请求 获取数据-->
+<!--回调的键名叫做 callback-->
+<!--跟ajax没有关系-->
+<!--JSONP利用script发送请求-->
+<!--ajax利用XMLHttpRequest发送请求-->
+
+<!--面试常问问题-->
+<!--JSONP的原理-->
+<!--    利用script的src发送跨域请求-->
+<!--    服务器返回一个方法的调用 并且有数据-->
+<!--JSONP能不能用来发post请求-->
+<!--        不能发送post请求 只能发送get请求-->
+<!--    JSONP跟ajax有没有关系-->
+<!--            没有-->
+<!--    jquery的jsonp跟ajax有没有关系-->
+<!--            没有-->
+<!--            jquery只是为了方便调用 才这么封装的 但是跟ajax没有半毛钱关系-->
 <script>
   $(function(){
+      $('input').first().click(function () {
+        $.ajax({
+            url:'https://api.asilu.com/images/baidu/',
+            success(data){
+                console.log(data)
+            },
+            dataType:'jsonp'
+        })
+      })
+      $('input').eq(1).click(function () {
+          $.ajax({
+              url:'https://api.asilu.com/phone/',
+              data:{
+                  phone:'13437191068'
+              },
+              success(data){
+                  console.log(data)
+              },
+              dataType:'jsonp'
+          })
+      })
     // 按钮1绑定点击事件
-    $('input').first().click(function(){
-      $.ajax({
-        url:'https://api.asilu.com/query/image/baidu/',
-        success:function(data){
-          console.log(data)
-        },
-        dataType:'jsonp'
-      })
-    })
-      // 按钮2绑定点击事件
-    $('input').eq(1).click(function(){
-      $.ajax({
-        url:'https://api.asilu.com/phone/',
-        data:{
-          phone:'15180120422'
-        },
-        success:function(data){
-          console.log(data)
-        },
-        dataType:'jsonp'
-      })
-    })
+    // $('input').first().click(function(){
+    //   $.ajax({
+    //     url:'https://api.asilu.com/query/image/baidu/',
+    //     success:function(data){
+    //       console.log(data)
+    //     },
+    //     dataType:'jsonp'
+    //   })
+    // })
+    //   // 按钮2绑定点击事件
+    // $('input').eq(1).click(function(){
+    //   $.ajax({
+    //     url:'https://api.asilu.com/phone/',
+    //     data:{
+    //       phone:'15180120422'
+    //     },
+    //     success:function(data){
+    //       console.log(data)
+    //     },
+    //     dataType:'jsonp'
+    //   })
+    // })
   })
 </script>

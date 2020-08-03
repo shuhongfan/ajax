@@ -12,7 +12,7 @@ if(array_key_exists('currentPage',$_POST)&&array_key_exists('pageSize',$_POST)){
     $pageSize = $_POST['pageSize'];
     
     // 读取数据 string
-    $jsonString = file_get_contents('../info/data_smile.json');
+    $jsonString = file_get_contents('info/data_smile.json',FILE_USE_INCLUDE_PATH);
     
     // 转化 string -> obj
     $totalArr = json_decode($jsonString);

@@ -196,79 +196,155 @@
   -->
 <script>
   $(function () {
-    // 需求1
     $('.name').blur(function () {
-      // 为了在代码中 使用this 不出现问题
-      var $this = $(this);
-      // 发送ajax 请求
       $.ajax({
-        url: '_api/checkName.php',
-        data: {
-          name: $this.val()
+        url:'_api/checkName.php',
+        data:{
+          name:$(this).val()
         },
-        success: function (data) {
-          console.log(data);
-          $('.tips').find('p').html(data).fadeIn(1000).delay(1000).fadeOut(1000);
+        success(data){
+          console.log(data)
+          $('.tips').find('p').html(data).fadeIn(1000).delay(1000).fadeOut(1000)
         }
       })
     })
-
-    // 需求2
     $('.mobile').blur(function () {
-      // 
       $.ajax({
-        url: '_api/checkMobile.php',
-        type: 'post',
-        data: {
-          mobile: $('.mobile').val()
+        url:'_api/checkMobile.php',
+        type:'post',
+        data:{
+          mobile:$(this).val()
         },
-        success: function (data) {
-          console.log(data);
-          $('.tips p').html(data).fadeIn(1000).delay(1000).fadeOut(1000);
+        success(data){
+          console.log(data)
+          $('.tips p').html(data).fadeIn(1000).delay(1000).fadeOut(1000)
         }
       })
     })
-
-    // 需求3 需求4
     $('.verify').click(function () {
-      // 判断拥有类名时 不能继续点击
-      if ($(this).hasClass('disabled')) {
-        alert('哥们,别点了');
-        return;
+      var totalTime=3
+      if ($(this).hasClass('disabled')){
+        alert(totalTime+'s后再点击')
+        return false
       }
-      // 添加类名
-      $(this).addClass('disabled');
-      // 定义倒计时的时间
-      var totalTime = 4;
-      // 直接修改内容即可
-      $(this).val('还有' + totalTime + 'S');
-      // 定时器 实现倒计时功能
-      var interId = setInterval(function () {
-        totalTime--;
-        if (totalTime == 0) {
-          // 清除定时器
-          clearInterval(interId);
-          // 移除 类名
-          $('.verify').removeClass('disabled');
-          // 更改内容
-          $('.verify').val('获取验证码');
-          // 阻断后续代码执行
-          return;
+      $('.verify').val('还有'+totalTime+'S')
+      var interId=setInterval(function () {
+        totalTime--
+        if (totalTime==0){
+          clearInterval(interId)
+          $('.verify').removeClass('disabled')
+          $('.verify').val('获取验证码')
+        } else {
+          $('.verify').val('还有'+totalTime+'S')
         }
-        $('.verify').val('还有' + totalTime + 'S');
-      }, 1000)
-      // 获取验证码
+      },1000)
+      $(this).addClass('disabled')
       $.ajax({
-        url: "_api/code.php",
-        data: {
-          mobile: $('.mobile').val()
+        url:'_api/code.php',
+        data:{
+          mobile:$('.code').val()
         },
-        success: function (data) {
-          console.log(data);
-          $('.code').val(data);
+        success(data){
+          console.log(data)
+          $('.code').val(data)
+
+          setInterval()
         }
       })
     })
-
+    $('.submit').click(function () {
+      $.ajax({
+        url:'_api/register.php',
+        type:'post',
+        data:{
+          name:$('.name').val(),
+          mobile:$('.mobile').val(),
+          pass:$('.pass').val(),
+          repass:$('.repass').val(),
+          code:$('.code').val()
+        },
+        success(data){
+          console.log(data)
+          $('.tips p').html(data).fadeIn(1000).delay(1000).fadeOut(1000)
+        }
+      })
+    })
   })
+
+  // $(function () {
+  //   // 需求1
+  //   $('.name').blur(function () {
+  //     // 为了在代码中 使用this 不出现问题
+  //     var $this = $(this);
+  //     // 发送ajax 请求
+  //     $.ajax({
+  //       url: '_api/checkName.php',
+  //       data: {
+  //         name: $this.val()
+  //       },
+  //       success: function (data) {
+  //         console.log(data);
+  //         $('.tips').find('p').html(data).fadeIn(1000).delay(1000).fadeOut(1000);
+  //       }
+  //     })
+  //   })
+  //
+  //   // 需求2
+  //   $('.mobile').blur(function () {
+  //     //
+  //     $.ajax({
+  //       url: '_api/checkMobile.php',
+  //       type: 'post',
+  //       data: {
+  //         mobile: $('.mobile').val()
+  //       },
+  //       success: function (data) {
+  //         console.log(data);
+  //         $('.tips p').html(data).fadeIn(1000).delay(1000).fadeOut(1000);
+  //       }
+  //     })
+  //   })
+  //
+  //   // 需求3 需求4
+  //   $('.verify').click(function () {
+  //     // 判断拥有类名时 不能继续点击
+  //     if ($(this).hasClass('disabled')) {
+  //       alert('哥们,别点了');
+  //       return;
+  //     }
+  //     // 添加类名
+  //     $(this).addClass('disabled');
+  //     // 定义倒计时的时间
+  //     var totalTime = 4;
+  //     // 直接修改内容即可
+  //     $(this).val('还有' + totalTime + 'S');
+  //     // 定时器 实现倒计时功能
+  //     var interId = setInterval(function () {
+  //       totalTime--;
+  //       if (totalTime == 0) {
+  //         // 清除定时器
+  //         clearInterval(interId);
+  //         // 移除 类名
+  //         $('.verify').removeClass('disabled');
+  //         // 更改内容
+  //         $('.verify').val('获取验证码');
+  //         // 阻断后续代码执行
+  //         return;
+  //       }
+  //       $('.verify').val('还有' + totalTime + 'S');
+  //     }, 1000)
+  //     // 获取验证码
+  //     $.ajax({
+  //       url: "_api/code.php",
+  //       data: {
+  //         mobile: $('.mobile').val()
+  //       },
+  //       success: function (data) {
+  //         console.log(data);
+  //         $('.code').val(data);
+  //       }
+  //     })
+  //   })
+  //
+  // })
 </script>

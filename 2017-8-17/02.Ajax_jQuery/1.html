@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.min.js"></script>
+    <style>
+        .cover{
+            height: 100%;
+            width: 100%;
+            background-color: skyblue;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 5;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="json" class="json">
+<input type="button" value="xml" class="xml">
+<div class="cover"></div>
+<script>
+    $(function () {
+        $('.json').click(function () {
+            // $('.cover').show()
+            $.ajax({
+                url:'../00.backData/backJSON.php',
+                success(data){
+                    console.log(data)
+                    // $('.cover').hide()
+                },
+                dataType:'json'
+            })
+        })
+        $('.xml').click(function () {
+            $.ajax({
+                url:'../00.backData/backXML.php',
+                success(data){
+                    console.log(data)
+                },
+                dataType: 'XML'
+            })
+        })
+        $(document).ajaxStart(function () {
+            $('.cover').show()
+        })
+        $(document).ajaxComplete(function () {
+            $('.cover').hide()
+        })
+    })
+</script>
+</body>
+</html>

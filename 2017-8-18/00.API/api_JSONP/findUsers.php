@@ -5,13 +5,13 @@ header('Content-Type:application/json;charset=utf-8');
 */
 
 // 默认值
-$con = mysql_connect("localhost","root","root");
+$con = mysqli_connect("localhost","root","root");
 
 if (!$con){
-    die('Could not connect: ' . mysql_error());
+    die('Could not connect: ' . mysqli_error());
 }
 
-mysql_select_db("test", $con);
+mysqli_select_db($con,"test" );
 
 $pageNum = $_GET['pageNum'];
 $pageSize = $_GET['pageSize'];
@@ -20,12 +20,12 @@ $start=($pageNum-1)*$pageSize;
 
 $sql="select *,(select count(*) from student) as total from student order by id desc limit $start , $pageSize ";
 
-$result = mysql_query($sql);
+$result = mysqli_query($con,$sql);
 
 $list = array();
 $total = 0;
 
-while($row = mysql_fetch_array($result)){
+while($row = mysqli_fetch_array($result)){
     $item = array(
     'id' => $row['id'],
     'password' => $row['password'],
@@ -48,7 +48,7 @@ array(
 
 echo $_GET['callback']."($resultJSONString)";
 
-mysql_close($con);
+mysqli_close($con);
 
 // sleep(1);
 ?>

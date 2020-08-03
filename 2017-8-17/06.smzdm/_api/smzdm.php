@@ -2,7 +2,7 @@
 header('content-type:application/json;charset=utf-8');
 
 // 读取数据 ->obj
-$arr = json_decode(file_get_contents('./data/smzdm_novels.json'));
+$arr = json_decode(file_get_contents('data/smzdm_novels.json',FILE_USE_INCLUDE_PATH));
 
 // 总个数
 $totalNum = count($arr);

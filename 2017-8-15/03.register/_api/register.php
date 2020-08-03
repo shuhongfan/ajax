@@ -2,7 +2,7 @@
 // 接受提交的数据 $_POST
 $name = $_POST['name'];
 // 读取出JSON // string
-$jsonString = file_get_contents('./data/arr.json');
+$jsonString = file_get_contents('data/arr.json',FILE_USE_INCLUDE_PATH);
 // 转化为 PHP对象 (数组)
 // string->arr
 $nameArr = json_decode($jsonString);
@@ -14,7 +14,7 @@ $newJsonString = json_encode($nameArr);
 // 写入 json文件中
 // 参数1 写入的文件
 // 参数2 写入的数据
-file_put_contents('./data/arr.json',$newJsonString);
+file_put_contents('data/arr.json',$newJsonString,FILE_USE_INCLUDE_PATH);
 // 提示用户 注册成功了
 
 echo '注册成功';
